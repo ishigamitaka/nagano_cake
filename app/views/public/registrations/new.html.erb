@@ -1,0 +1,87 @@
+<div class="conteiner">
+  <div class="row">
+    <h3 class="col-md-3 offset-3">新規会員登録</h3>
+  </div>
+  
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+  <div class="container">
+    <div class="col-md-10 offset-1">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <%= f.label :名前 %>
+            </td>
+            <td>（性）</td>
+            <td><%= f.text_field :last_name %></td>
+            <td>（名）</td>
+            <td><%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :フリガナ %>
+            </td>
+            <td>（セイ）</td>
+            <td><%= f.text_field :last_name_kana %></td>
+            <td>（メイ）</td>
+            <td><%= f.text_field :first_namr_kana %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :メールアドレス %></td>
+            <td></td>
+            <td><%= f.text_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :郵便番号（ハイフンなし）%></td>
+            <td></td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :住所 %></td>
+            <td></td>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :電話番号 %></td>
+            <td></td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :パスワード（6文字以上） %></td>
+            <td></td>
+            <td>
+              <% if @minimum_password_length %>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.label :確認用 %></td>
+            <td></td>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= f.submit "新規登録" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <h3 class="col-md-3 offset-1">
+        既に登録済みの方
+      </h3>
+      <div class="row">
+        <div class="col-md-3 offset-3">
+          <%= link_to new_customer_session_path do %>
+            こちら
+          <% end %>
+          からログインして下さい。
+        </div>
+      </div>
+  </div>
+<% end %>
