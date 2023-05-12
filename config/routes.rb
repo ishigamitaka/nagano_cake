@@ -18,6 +18,16 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  scope :public do
+    get 'customers/confirmation'
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    resources :customers, only: [:show, :edit, :update, :confirmation]
+    resources :cart_items
+    resources :homes
+    resources :items
+    resources :orders
+  end
+  
   root to: "public/homes#top"
   get 'about' => 'public/homes#about'
 end

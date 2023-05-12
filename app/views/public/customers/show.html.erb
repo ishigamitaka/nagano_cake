@@ -1,0 +1,46 @@
+<div class="conteiner">
+  <div class="row">
+    <h3 class="col-md-3 offset-3">マイページ</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-3 offset-1">
+      登録情報
+     <%= link_to "編集する", edit_public_customer_path(current_customer.id) %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="col-md-10 offset-1">
+      <table>
+        <tbody>
+          <tr>
+            <td>氏名</td>
+            <td><%= @customer.last_name %></td>
+            <td><%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td>:カナ</td>
+            <td><%= @customer.last_name_kana %></td>
+            <td><%= @customer.first_namr_kana %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-3 offset-1">
+        注文履歴
+        <%= link_to "一覧を見る", orders_path %>
+      </div>
+    </div>
+  </div>

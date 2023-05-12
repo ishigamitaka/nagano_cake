@@ -1,0 +1,37 @@
+<div class="conteiner">
+  <h3 class="col-md-3 offset-3">
+    商品詳細
+  </h3>
+  <div class="container">
+    <div class="col-md-2 offset2">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "100x70" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x70" %>
+      <% end %>
+    </div>
+    <div class="col-md-6 offset-4">
+      <table>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
