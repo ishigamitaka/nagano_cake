@@ -16,15 +16,16 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # 管理者側のルーティング設定
   namespace :admin do
     resources :items
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  scope :public do
+  scope module: :public do
     get 'customers/confirmation'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :customers, only: [:show, :edit, :update, :confirmation]
     resources :cart_items
     resources :homes
-    resources :items
+    resources :items, only: [:index, :show]
     resources :orders
   end
   

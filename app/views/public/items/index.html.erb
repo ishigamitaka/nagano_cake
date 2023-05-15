@@ -1,0 +1,23 @@
+<div class="conteiner">
+  <h3 class="col-md-3 offset-3">
+    商品一覧
+  </h3>
+
+  <div class="mx-auto">
+    <div class="card-deck">
+      <% @items.each do |item| %>
+          <div class="card">
+        	  <% if item.image.attached? %>
+              <%= image_tag item.image, size: "80x70", class: "card-img-top" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "80x70", class: "card-img-top" %>
+            <% end %>
+            <div class="card-body">
+        		  <p class="card-title"><%= item.name %></p>
+        		  <p class="card-text"><%= item.price %></p>
+    	      </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

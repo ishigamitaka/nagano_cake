@@ -3,31 +3,36 @@
     商品詳細
   </h3>
   <div class="container">
-    <div class="col-md-2 offset2">
-      <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "100x70" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "100x70" %>
-      <% end %>
-    </div>
     <div class="col-md-6 offset-4">
       <table>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
+            <td>
+                <% if @item.image.attached? %>
+                  <%= image_tag @item.image, size: "200x170" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "200x170" %>
+                <% end %>
+            </td>
+            <td>商品名</td>
+            <td><%= @item.name %></td>
           </tr>
           <tr>
             <td></td>
-            <td></td>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
           </tr>
           <tr>
             <td></td>
-            <td></td>
+            <td>税込み価格<br/>
+            （税込み価格）
+            </td>
+            <td><%= @item.price %></td>
+            <td><%=%></td>
           </tr>
           <tr>
             <td></td>
-            <td></td>
+            <td><%= link_to "編集する", edit_admin_item_path(@item.id) %></td>
             <td></td>
           </tr>
         </tbody>

@@ -1,0 +1,35 @@
+<div class="conteiner">
+  <h3 class="col-md-3 offset-3">
+    商品一覧
+  </h3>
+  <div class="container">
+    <div class="col-md-6 offset-4">
+      <table>
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th></th>
+            <th>商品名</th>
+            <th></th>
+            <th>税抜価格</th>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+        <tbody>
+          <tr>
+            <td><%= item.id %></td>
+            <td></td>
+            <td><%= item.name %></td>
+            <td></td>
+            <td><%= item.price %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  
+</div>
+<!--<div class = "text_center">-->
+  <!--%= paginate @items %>-->
+<!--</div>-->

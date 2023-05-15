@@ -2,7 +2,7 @@
   <h3 class="col-md-3 offset-3">
     商品新規登録
   </h3>
-  <%= form_with model: Item.new do |f| %>
+  <%= form_with model: @item, url:admin_items_path, method: :post do |f| %>
   <div class="container">
     <div class="col-md-6 offset-4">
       <table>
