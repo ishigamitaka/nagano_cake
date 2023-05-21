@@ -1,23 +1,31 @@
 <div class="container">
-    <div class="col-md-3 offset3">
-      <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "200x170" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "200x170" %>
-      <% end %>
+    <div class="col-md-9 offset-3">
+      <table>
+        <tr>
+          <td>
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image, size: "200x170" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x170" %>
+            <% end %>
+          </td>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= @item.price %>
+              <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+               <%= f.label :amount, "個数選択" %>
+               <%= f.select :amount, *[1..10] %>
+               <%= f.hidden_field :item_id, :value => @item.id %>
+               <%= f.submit "カートに入れる" %>
+              <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
-  <div class="col-md-6 offsrt-6">
-    <table>
-      <tr>
-        <td><%= @item.name %></td>
-      </tr>
-      <tr>
-        <td><%= @item.introduction %></td>
-      </tr>
-      <tr>
-        <td><%= @item.price %></td>
-        <td><%= @item.introduction %></td>
-      </tr>
-    </table>
-  </div>
 </div>

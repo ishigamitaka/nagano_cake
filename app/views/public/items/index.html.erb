@@ -6,6 +6,7 @@
   <div class="mx-auto">
     <div class="card-deck">
       <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
           <div class="card">
         	  <% if item.image.attached? %>
               <%= image_tag item.image, size: "80x70", class: "card-img-top" %>
@@ -17,6 +18,7 @@
         		  <p class="card-text"><%= item.price %></p>
     	      </div>
           </div>
+        <% end %>
       <% end %>
     </div>
   </div>
