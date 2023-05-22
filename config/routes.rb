@@ -19,7 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
     resources :registrations
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show,]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :public do
@@ -30,7 +30,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :cart_items
     resources :homes
     resources :items, only: [:index, :show]
-    resources :orders
+    resources :orders, only: [:new, :index, :show, :complete, :confirmation]
   end
   
   root to: "public/homes#top"
