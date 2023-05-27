@@ -30,7 +30,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :cart_items
     resources :homes
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new, :index, :show, :complete, :confirmation]
+    post '/orders/confirmation'
+    get '/orders/complete'
+    resources :orders, only: [:new, :index, :show, :create]
   end
   
   root to: "public/homes#top"

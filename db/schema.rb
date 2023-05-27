@@ -99,10 +99,12 @@ ActiveRecord::Schema.define(version: 2023_05_12_112544) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "postage", null: false
+    t.integer "postage", default: 800
     t.integer "method_of_payment", null: false
-    t.integer "payment", null: false
-    t.string "address_name", null: false
+    t.string "address", null: false
+    t.string "name", null: false
+    t.integer "total_payment", null: false
+    t.string "postal_code", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
