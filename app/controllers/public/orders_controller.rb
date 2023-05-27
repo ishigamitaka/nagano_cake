@@ -7,8 +7,6 @@ class Public::OrdersController < ApplicationController
   end 
   def show
     @order=Order.find(params[:id])
-    @cart_items = current_customer.cart_items
-    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end 
   def confirmation
     @order = Order.new(order_params)
