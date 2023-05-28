@@ -1,28 +1,47 @@
-<div class="conteiner">
-  <h3 class="col-md-3 offset-3">
-    会員一覧
-  </h3>
-  <div class="col-md-9 offset-4">
+<div class="container">
+  <div class="col-md-3 offset-2">
+    注文詳細履歴詳細
+  </div>
+  <div class="col-md-10 offset-1">
+    <th>購入者</th>
+    <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td><br>
+    <th>注文日</th>
+    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td><br>
+    <th>配送先</th>
+    <td><%= @order.address %></td><br>
+    <th>支払方法</th>
+    <td><%= @order.method_of_payment_i18n %></td><br>
+  </div>
+  <div class="col-md-7 offset-1">
     <table>
-      <thead>
-        <tr>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-        </tr>
-      </thead>
+      <therd>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+      </therd>
+      <% @order.order_items.each do |order_item| %>
       <tbody>
-        <% @customers.each do |customer| %>
-        <tr>
-          <td><%= custmer.id %></td>
-          <td><%= customer.last_name %><%= cusutomer.first_name %></td>
-          <td><%= customer.email %></td>
-          <td>¥<%= cart_item.subtotal %></td>
-        </tr>
-        <% end %>
+        <td><%= order_item.item.name %></td>
+        <td><%= order_item.item.with_tax_price %></td>
+        <td><%= order_item.amount %></td>
+        <td><%= order_item.item.with_tax_price * order_item.amount %></td>
       </tbody>
+      <% end %>
     </table>
   </div>
-    </div>
+  <div class="col-md-3 offset-9">
+    <tr>
+      <th>商品合計</th>
+      <td><%= @order.total_payment %></td>
+    </tr><br>
+    <tr>
+      <th>送料</th>
+      <td><%= @order.postage %></td>
+    </tr><br>
+    <tr>
+      <th>請求金額合計</th>
+      <td><%= @order.total_payment - @order.postage %></td>
+    </tr><br>
   </div>
 </div>

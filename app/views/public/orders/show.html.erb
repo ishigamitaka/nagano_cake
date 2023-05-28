@@ -25,9 +25,9 @@
             <th>ご請求額</th>
           </thead>
           <tbody>
-            <td><%= @order.total_payment - @order.postage %></td>
-            <td><%= @order.postage %></td>
             <td><%= @order.total_payment %></td>
+            <td><%= @order.postage %></td>
+            <td><%= @order.total_payment - @order.postage %></td>
           </tbody>
         </tr>
       </table>

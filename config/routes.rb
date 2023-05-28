@@ -23,9 +23,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :public do
-    get 'customers/confirmation'
+    get 'customers/confirmation' => "customers#confirmation"
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-    resources :customers, only: [:show, :edit, :update, :confirmation]
+    get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/information' => 'customers#update'
+    resource :customers, only: [:show]
     delete "/cart_items/destory_all" => "cart_items#destory_all"
     resources :cart_items
     resources :homes

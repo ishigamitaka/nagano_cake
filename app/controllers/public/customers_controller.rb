@@ -1,10 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  def index
-    @customer = Customer.find(params[:id])
-  end
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer == current_customer
       render "edit"
     else
@@ -12,12 +9,15 @@ class Public::CustomersController < ApplicationController
     end
   end
   def update
-    @custmoer = Customer.find(params[:id])
-    customer.update(customer_params)
-    redirect_to customer_path(customer.id)
+    @customer = current_customer
+    if @customer.update(customer_params)
+    redirect_to customers_path
+    else 
+    render customers_information_edit_path
+    end 
   end
   def show
-    @customer= Customer.find(params[:id])
+    @customer = current_customer
   end
   def confirmation
     @customer= current_customer
@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
   def create
   end
   def withdrawal
-    @custmoer = Customer.find(params[:id])
+    @customer = current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
     reset_session
