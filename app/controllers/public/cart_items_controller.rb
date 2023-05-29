@@ -30,7 +30,7 @@ class Public::CartItemsController < ApplicationController
   def destory_all
     
     current_customer.cart_items.destroy_all
-    redirect_to items_path
+    redirect_to cart_items_path
   end 
   
   private

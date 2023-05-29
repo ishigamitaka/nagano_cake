@@ -22,8 +22,6 @@ class Public::CustomersController < ApplicationController
   def confirmation
     @customer= current_customer
   end
-  def create
-  end
   def withdrawal
     @customer = current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる

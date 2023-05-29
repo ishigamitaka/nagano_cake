@@ -1,9 +1,12 @@
 class Public::OrdersController < ApplicationController
   def new
+    unless current_customer.cart_items.count >= 1 
+      redirect_to cart_items_path
+    end 
     @order = Order.new
   end 
   def index
-    @orders=Order.all
+    @orders = current_customer.orders
   end 
   def show
     @order=Order.find(params[:id])
